@@ -25,10 +25,10 @@
                   <%= link_to "Home", root_path, class: 'nav-link text-light fas fa-home' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Users", user_path(current_user.id), class: 'nav-link text-light fas fa-users'  %>
+                  <%= link_to "Users", users_path, class: 'nav-link text-light fas fa-users'  %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Books", book_path, method: :delete, class: 'nav-link text-light fas fa-book-open'  %>
+                  <%= link_to "Books", books_path, class: 'nav-link text-light fas fa-book-open'  %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "Log out", destroy_user_session_path, method: :delete , class: 'nav-link text-light fas fa-sign-out-alt' %>
@@ -52,19 +52,20 @@
         </div>
       </nav>
     </header>
-    <main class="mb-auto">
-      <div class="container">
-        <%= yield %>
-        
-      </div>
+    <main>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key} green") %>
+      <% end %>
+      <%= yield %>
     </main>
     <footer>
-      <div class="row">
-        <div class="mx-auto">
-          <p>CopyRight Infratop.inc</p>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
         </div>
-      </div>
+    </div>
     </footer>
-
   </body>
 </html>
