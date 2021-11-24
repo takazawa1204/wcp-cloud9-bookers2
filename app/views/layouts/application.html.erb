@@ -22,7 +22,7 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "Home", root_path, class: 'nav-link text-light fas fa-home' %>
+                  <%= link_to "Home", user_path(current_user), class: 'nav-link text-light fas fa-home' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "Users", users_path, class: 'nav-link text-light fas fa-users'  %>
@@ -38,10 +38,10 @@
                   <%= link_to "Home", root_path, class: 'nav-link text-light fas fa-home'  %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "About", about_path, class: 'nav-link text-light fas fa-link'  %>
+                  <%= link_to "About", home_about_path, class: 'nav-link text-light fas fa-link'  %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "sign_in", new_user_registration_path, class: 'nav-link text-light fas fa-user-plus'  %>
+                  <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light fas fa-user-plus'  %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light fas fa-sign-in-alt'  %>
@@ -54,7 +54,7 @@
     </header>
     <main>
       <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key} green") %>
+        <p><%= content_tag(:div, value, class: "#{key} green") %></p>
       <% end %>
       <%= yield %>
     </main>
